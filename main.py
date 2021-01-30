@@ -10,10 +10,11 @@ app = Flask(__name__)
 def requestAPI(method, port, subpath, payload):
     if method in HTTP_METHODS and method != 'GET':
         r = getattr(requests, method.lower())(
-            f'http://localhost:{port}/{subpath}', data=payload)
+            "http://localhost:" + str(port) + "/" + str(subpath), data=payload)
         return r.text
     elif method == 'GET':
-        r = requests.get(f'http://localhost:{port}/{subpath}', params=payload)
+        r = requests.get(
+            "http://localhost:" + str(port) + "/" + str(subpath), params=payload)
         return r.text
     else:
         return f'Unauthorized methods: {method}'
