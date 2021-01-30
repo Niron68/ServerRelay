@@ -17,7 +17,7 @@ def requestAPI(method, port, subpath, payload):
             "http://localhost:" + str(port) + "/" + str(subpath), params=payload)
         return r.text
     else:
-        return f'Unauthorized methods: {method}'
+        return "Unauthorized methods: " + method
 
 
 @app.route("/")
